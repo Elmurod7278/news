@@ -20,21 +20,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('partials.body');
-});
-
-Auth::routes();
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('category', CategoryController::class);
-Route::get('catser', [CategoryController::class,'catser'])->name('catser');
-Route::resource('regions', RegionController::class);
-Route::resource('tag', TagController::class);
-Route::resource('tanlov', TanlovController::class);
-Route::resource('news', NewsController::class);
-Route::resource('advertises', AdvertiseController::class);
-Route::resource('Newstags', NewsTagController::class);
-Route::post('news-add-tag/{news}', [NewsController::class, 'addTag'])->name('news-add-tag');
-Route::delete('del/{tag}', [NewsController::class, 'del'])->name('del');
-Route::post('tanlov/{news}', [NewsController::class, 'tanlov'])->name('tanlov');
+
+
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::get('/', function () {
+        return view('partials.body');
+    });
+    Auth::routes();
+
+    Route::resource('category', CategoryController::class);
+    Route::get('catser', [CategoryController::class, 'catser'])->name('catser');
+    Route::resource('regions', RegionController::class);
+    Route::resource('tag', TagController::class);
+    Route::resource('tanlov', TanlovController::class);
+    Route::resource('news', NewsController::class);
+    Route::resource('advertises', AdvertiseController::class);
+    Route::resource('Newstags', NewsTagController::class);
+    Route::post('news-add-tag/{news}', [NewsController::class, 'addTag'])->name('news-add-tag');
+    Route::delete('del/{tag}', [NewsController::class, 'del'])->name('del');
+    Route::post('tanlov/{news}', [NewsController::class, 'tanlov'])->name('tanlov');
+
+});
