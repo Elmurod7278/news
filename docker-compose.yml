@@ -1,0 +1,65 @@
+version: '3.7'
+
+services:
+
+    nginx:
+        image: nginx:1.17-alpine
+        container_name: newss-nginx
+        restart: unless-stopped
+        ports:
+            - 6500:80
+        volumes:
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+            - ./:/var/www/html
+            - ./docker/nginx:/etc/nginx/conf.d:cached
+        links:
+            - php-fpm
+        depends_on:
+            - php-fpm
+            - db
+        networks:
+            - newss
+
+    php-fpm:
+        build: docker/php-fpm
+        restart: unless-stopped
+        container_name: newss-php
+        ports:
+            - 9000:9000
+        volumes:
+            - ./:/var/www/html
+        links:
+            - db
+        depends_on:
+            - db
+        networks:
+            - newss
+
+    db:
+        image: mysql:5.7
+        platform: linux/x86_64
+        restart: unless-stopped
+        ports:
+            - 33061:3306
+        volumes:
+            - db_data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: 'newss'
+            MYSQL_ROOT_USER: 'root'
+            MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+            MYSQL_PASSWORD:
+            MYSQL_ROOT_PASSWORD:
+        networks:
+            - newss
+
+networks:
+    newss:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.101.0/28
+
+
+volumes:
+    db_data: {}
