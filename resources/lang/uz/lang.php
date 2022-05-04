@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'login' => 'Kirish'
+    'login' => 'Кириш'
 ];

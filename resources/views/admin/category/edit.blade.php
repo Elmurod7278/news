@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('category.update',['category'=>$category->id]) }}">
+    <form method="POST" action="{{ route('admin.category.update',['category'=>$category->id]) }}">
         @method('PUT')
         @csrf
         <div class="card mb-3">

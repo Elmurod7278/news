@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <p><a href="{{ route('category.create') }}" class="btn btn-success">Kategoriya qo'shish</a></p>
+    <p><a href="{{ route('admin.category.create') }}" class="btn btn-success">Kategoriya qo'shish</a></p>
 
     <div class="card mb-3">
         <div class="card-body">
@@ -57,7 +57,7 @@
                         @forelse ($categories as $category)
                             <tr>
                                 <td>
-                                    <a href="{{route('category.show',['category'=>$category])}}">{{ $category->name_uz }}</a>
+                                    <a href="{{route('admin.category.show',['category'=>$category])}}">{{ $category->name_uz }}</a>
                                 </td>
                                 <td>
                                     <p href="">{{ $category->name_ru }}</p>
@@ -66,9 +66,9 @@
                                     <p href="">{{ $category->name_oz }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{route('category.edit',['category'=>$category->id])}}"
+                                    <a href="{{route('admin.category.edit',['category'=>$category->id])}}"
                                        class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-                                    <form action="{{route('category.destroy',['category'=>$category])}}" method="POST"
+                                    <form action="{{route('admin.category.destroy',['category'=>$category])}}" method="POST"
                                           style="display: inline-block">
                                         @method('Delete')
                                         @csrf

@@ -2,9 +2,9 @@
 
 @section('content')
     @include('admin.errors.flash')
-    <a href="{{route('news.edit',['news'=>$news->id])}}" class="btn btn-success">Taxrirlash
+    <a href="{{route('admin.news.edit',['news'=>$news->id])}}" class="btn btn-success">Taxrirlash
          </a>
-    <form action="{{route('news.destroy',['news'=>$news])}}" method="POST" style="display: inline-block">
+    <form action="{{route('admin.news.destroy',['news'=>$news])}}" method="POST" style="display: inline-block">
         @method('Delete')
         @csrf
         <button type="submit" class="btn btn-danger"
@@ -12,7 +12,7 @@
             O'chirish</button>
     </form>
 
-    <form action="{{route('tanlov',['news' => $news])}}" method="POST" style="display: inline-block">
+    <form action="{{route('admin.tanlov',['news' => $news])}}" method="POST" style="display: inline-block">
         @method('POST')
         @csrf
                 <button class="btn btn-success {{\App\Models\Tanlov::where(['news_id'=>$news->id])->first() ? 'disabled':''}}"  type="submit">Tanlovga qo'shish</button>
@@ -91,7 +91,7 @@
                                <tr>
                             <td>{{ $tag->tag->name_uz }}</td>
                             <td>
-                                <form action="{{route('del',['tag'=>$tag])}}" method="POST" style="display: inline-block">
+                                <form action="{{route('admin.del',['tag'=>$tag])}}" method="POST" style="display: inline-block">
                                     @method('Delete')
                                     @csrf
                                     <button type="submit" class="btn btn-danger"
@@ -114,7 +114,7 @@
     {{--Teg qoshish--}}
 
     <div class="container">
-        <form action="{{route('news-add-tag',['news' => $news])}}" method="POST">
+        <form action="{{route('admin.news-add-tag',['news' => $news])}}" method="POST">
             @method('POST')
             @csrf
             <h5>Teg qo'shish</h5>

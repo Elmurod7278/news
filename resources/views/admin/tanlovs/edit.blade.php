@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('tag.update',['tag'=>$tag->id]) }}">
+    <form method="POST" action="{{ route('admin.tag.update',['tag'=>$tag->id]) }}">
         @method('PUT')
         @csrf
         <div class="card mb-3">

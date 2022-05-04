@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{route('category.edit',['category'=>$category->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-    <form action="{{route('category.destroy',['category'=>$category])}}"method="POST" style="display: inline-block">
+    <a href="{{route('admin.category.edit',['category'=>$category->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+    <form action="{{route('admin.category.destroy',['category'=>$category])}}"method="POST" style="display: inline-block">
         @method('Delete')
         @csrf
         <button type="submit" id="button" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>

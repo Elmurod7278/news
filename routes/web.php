@@ -29,6 +29,10 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
+Route::get('', function () {
+    return view('partials.body');
+})->name('home');
+
 
 
 
@@ -37,26 +41,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'name' => 'admin.', 'middle
     Route::resource('permissions', PermissionController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+
+    Route::resource('category', CategoryController::class);
+    Route::get('catser', [CategoryController::class, 'catser'])->name('catser');
+    Route::resource('regions', RegionController::class);
+    Route::resource('tag', TagController::class);
+    Route::resource('tanlov', TanlovController::class);
+    Route::resource('news', NewsController::class);
+    Route::resource('advertises', AdvertiseController::class);
+    Route::resource('Newstags', NewsTagController::class);
+    Route::post('news-add-tag/{news}', [NewsController::class, 'addTag'])->name('news-add-tag');
+    Route::delete('del/{tag}', [NewsController::class, 'del'])->name('del');
+    Route::post('tanlov/{news}', [NewsController::class, 'tanlov'])->name('tanlov');
+
 });
-
-
-
-
-
-Route::get('', function () {
-    return view('partials.body');
-})->name('home');
-
-Route::resource('category', CategoryController::class);
-Route::get('catser', [CategoryController::class, 'catser'])->name('catser');
-Route::resource('regions', RegionController::class);
-Route::resource('tag', TagController::class);
-Route::resource('tanlov', TanlovController::class);
-Route::resource('news', NewsController::class);
-Route::resource('advertises', AdvertiseController::class);
-Route::resource('Newstags', NewsTagController::class);
-Route::post('news-add-tag/{news}', [NewsController::class, 'addTag'])->name('news-add-tag');
-Route::delete('del/{tag}', [NewsController::class, 'del'])->name('del');
-Route::post('tanlov/{news}', [NewsController::class, 'tanlov'])->name('tanlov');
 
 

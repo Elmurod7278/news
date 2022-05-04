@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'full_name'                   => 'الاسم الثلاثي',
-    'email'                       => 'البريد الإلكتروني',
+    'full_name'                   => 'FISH',
+    'email'                       => 'Email manzili',
     'password'                    => 'كلمة السر',
     'retype_password'             => 'أعد إدخال كلمة السر',
     'remember_me'                 => 'ذكرني',

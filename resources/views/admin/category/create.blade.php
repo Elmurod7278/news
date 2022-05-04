@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('category.store') }}">
+    <form method="POST" action="{{ route('admin.category.store') }}">
         @csrf
         <div class="card mb-3">
             <div class="card-body">

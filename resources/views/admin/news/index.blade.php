@@ -3,7 +3,7 @@
 
 @section('content')
    @can('news-create')
-       <p><a href="{{ route('news.create') }}" class="btn btn-success">Yangilik qo'shish</a></p>
+       <p><a href="{{ route('admin.news.create') }}" class="btn btn-success">Yangilik qo'shish</a></p>
    @endcan
     <div class="card mb-3">
         <div class="card-body">
@@ -53,7 +53,7 @@
 
                             <tr>
                                 <td>
-                                    <a href="{{route('news.show',['news'=>$new])}}">{{ $new->title_uz }}</a>
+                                    <a href="{{route('admin.news.show',['news'=>$new])}}">{{ $new->title_uz }}</a>
                                 </td>
                                 <td>
                                     <p href="">{{ $new->desc_uz }}</p>
@@ -69,8 +69,8 @@
                                     <p href="">{{ $new->views_count }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{route('news.edit',['news'=>$new->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-                                    <form action="{{route('news.destroy',['news'=>$new])}}" method="POST" style="display: inline-block">
+                                    <a href="{{route('admin.news.edit',['news'=>$new->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+                                    <form action="{{route('admin.news.destroy',['news'=>$new])}}" method="POST" style="display: inline-block">
                                         @method('Delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>

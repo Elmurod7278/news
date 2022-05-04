@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <a href="{{route('regions.edit',['region'=>$region->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-    <form action="{{route('regions.destroy',['region'=>$region])}}"method="POST" style="display: inline-block">
+    <a href="{{route('admin.regions.edit',['region'=>$region->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+    <form action="{{route('admin.regions.destroy',['region'=>$region])}}"method="POST" style="display: inline-block">
         @method('Delete')
         @csrf
         <button type="submit" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>

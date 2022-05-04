@@ -7,16 +7,31 @@
                         {{--                       //tursin bu soha--}}
                     </ul>
                     <ul class="navbar-top-right-menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">{{ __('lang.login') }}</a>
-                            <span>{{ __('lang.setting.qalay') }}</span>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Sign in</a>
-                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">{{ auth()->user()->name }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <button class="btn btn-danger">
+                                        <span class="mdi mdi-arrow-left-circle-outline"></span>
+                                        &nbsp;
+                                        {{ __('lang.logout') }}
+                                    </button>
+                                </form>
+                            </li>
+                        @endauth
+
+                        @guest
+                            <li class="nav-item">
+                                <a href="{{route('register')}}" class="nav-link">{{__('lang.register')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('login')}}" class="nav-link">{{__('lang.login')}}</a>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -53,14 +68,16 @@
                                 </li>
                                 @foreach($category as $item)
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">{!! $item->{'name_'.app()->getLocale()} !!}</a>
+                                        <a class="nav-link"
+                                           href="index.html">{!! $item->{'name_'.app()->getLocale()} !!}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="dropdown">
-                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Config::get('languages')[App::getLocale()] }}
                         </a>
 
@@ -81,5 +98,7 @@
 </header>
 
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <!-- CSS only -->

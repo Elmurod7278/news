@@ -241,111 +241,55 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+//        [
+//            'text' => 'blog',
+//            'url'  => 'admin/blog',
+//            'can'  => 'manage-blog',
+//        ],
         [
             'text'        => 'Kategoriyalar',
-            'url'         => 'category',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'url'         => 'admin/category',
+            'icon'        => 'fa fa-window-restore',
             'label_color' => 'success',
         ],
         [
             'text'        => 'Yangiliklar',
-            'url'         => 'news',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'url'         => 'admin/news',
+            'icon'        => 'fa fa-newspaper',
             'label_color' => 'success',
         ],
         [
             'text'        => 'Regionlar',
-            'url'         => 'regions',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'url'         => 'admin/regions',
+            'icon'        => 'fa fa-university',
             'label_color' => 'success',
         ],
         [
             'text'        => 'Reklamalar',
-            'url'         => 'advertises',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'url'         => 'admin/advertises',
+            'icon'        => 'fa fa-th',
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Tag',
-            'url'         => 'tag',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Teg',
+            'url'         => 'admin/tag',
+            'icon'        => 'fa fa-check-circle',
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Role Management',
+            'url'         => 'admin/roles',
+            'icon'        => 'fa fa-key',
+            'label_color' => 'success',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text'        => 'Permissions',
+            'url'         => 'admin/permissions',
+            'icon'        => 'fa fa-toggle-on',
+            'label_color' => 'success',
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
+
     ],
 
     /*

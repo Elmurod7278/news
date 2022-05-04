@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <p><a href="{{ route('advertises.create') }}" class="btn btn-success">Reklama qo'shish</a></p>
+    <p><a href="{{ route('admin.advertises.create') }}" class="btn btn-success">Reklama qo'shish</a></p>
     <div class="card mb-3">
         <div class="card-body">
             <form action="?" method="GET">
@@ -56,8 +56,8 @@
                                 </td>
                                 <td>
 
-                                    <a href="{{route('advertises.edit',['advertise'=>$advertise])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-                                    <form action="{{route('advertises.destroy',['advertise'=>$advertise])}}" method="POST" style="display: inline-block">
+                                    <a href="{{route('admin.advertises.edit',['advertise'=>$advertise])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+                                    <form action="{{route('admin.advertises.destroy',['advertise'=>$advertise])}}" method="POST" style="display: inline-block">
                                         @method('Delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>

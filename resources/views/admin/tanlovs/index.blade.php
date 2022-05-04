@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <p><a href="{{ route('tanlov.create') }}" class="btn btn-success">tanlov qo'shish</a></p>
+    <p><a href="{{ route('admin.tanlov.create') }}" class="btn btn-success">tanlov qo'shish</a></p>
     <div class="card mb-3">
         <div class="card-body">
             <form action="?" method="GET">
@@ -49,12 +49,12 @@
                         @forelse ($tanlovs as $tanlov)
                             <tr>
                                 <td>
-                                    <a href="{{route('tanlov.show',['tanlov'=>$tanlov])}}">{{ $tanlov->name_uz }}</a>
+                                    <a href="{{route('admin.tanlov.show',['tanlov'=>$tanlov])}}">{{ $tanlov->name_uz }}</a>
                                 </td>
 
                                 <td>
-                                    <a href="{{route('tanlov.edit',['tanlov'=>$tanlov->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-                                    <form action="{{route('tanlov.destroy',['tanlov'=>$tanlov])}}"method="POST" style="display: inline-block">
+                                    <a href="{{route('admin.tanlov.edit',['tanlov'=>$tanlov->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+                                    <form action="{{route('admin.tanlov.destroy',['tanlov'=>$tanlov])}}"method="POST" style="display: inline-block">
                                         @method('Delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>

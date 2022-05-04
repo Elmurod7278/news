@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <p><a href="{{ route('regions.create') }}" class="btn btn-success">Region qo'shish</a></p>
+    <p><a href="{{ route('admin.regions.create') }}" class="btn btn-success">Region qo'shish</a></p>
     <div class="card mb-3">
         <div class="card-body">
             <form action="?" method="GET">
@@ -49,7 +49,7 @@
                         @forelse ($regions as $region)
                             <tr>
                                 <td>
-                                    <a href="{{route('regions.show',['region'=>$region])}}">{{ $region->name_uz }}</a>
+                                    <a href="{{route('admin.regions.show',['region'=>$region])}}">{{ $region->name_uz }}</a>
                                 </td>
                                 <td>
                                     <p href="">{{ $region->name_ru }}</p>
@@ -58,8 +58,8 @@
                                     <p href="">{{ $region->name_oz }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{route('regions.edit',['region'=>$region->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
-                                    <form action="{{route('regions.destroy',['region'=>$region])}}"method="POST" style="display: inline-block">
+                                    <a href="{{route('admin.regions.edit',['region'=>$region->id])}}" class="btn btn-success"><i class='fas fa-pencil-alt fa-lg'></i></a>
+                                    <form action="{{route('admin.regions.destroy',['region'=>$region])}}"method="POST" style="display: inline-block">
                                         @method('Delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Siz haqiqatdan ham ushbu maxsulotni o\'chirmoqchimisiz')"><i class='fas fa-trash fa-lg'></i></button>
