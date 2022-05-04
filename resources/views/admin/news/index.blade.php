@@ -2,7 +2,9 @@
 
 
 @section('content')
-    <p><a href="{{ route('news.create') }}" class="btn btn-success">Yangilik qo'shish</a></p>
+   @can('news-create')
+       <p><a href="{{ route('news.create') }}" class="btn btn-success">Yangilik qo'shish</a></p>
+   @endcan
     <div class="card mb-3">
         <div class="card-body">
             <form action="?" method="GET">

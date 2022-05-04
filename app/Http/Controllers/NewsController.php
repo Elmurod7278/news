@@ -14,7 +14,11 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('permissions:news-create', ['only' => ['create']]);
+        $this->middleware('permissions:news-edit', ['only' => ['edit']]);
+    }
 
     public function index(Request $request)
     {

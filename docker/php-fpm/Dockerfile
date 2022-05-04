@@ -1,4 +1,4 @@
-FROM hermsi/alpine-fpm-php:7.3.0
+FROM hermsi/alpine-fpm-php:8.0
 
 RUN mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 RUN sed -i 's/;opcache.enable=1/opcache.enable=0/g' /usr/local/etc/php/php.ini

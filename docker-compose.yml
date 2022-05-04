@@ -37,7 +37,7 @@ services:
 
     db:
         image: mysql:5.7
-        platform: linux/x86_64
+#        platform: linux/x86_64
         restart: unless-stopped
         ports:
             - 33061:3306

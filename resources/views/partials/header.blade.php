@@ -11,7 +11,8 @@
                             <a href="#" class="nav-link"></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Login</a>
+                            <a href="#" class="nav-link">{{ __('lang.login') }}</a>
+                            <span>{{ __('lang.setting.qalay') }}</span>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Sign in</a>
@@ -51,11 +52,8 @@
                                     </button>
                                 </li>
                                 @foreach($category as $item)
-                                    {{--                                    @php($lang  = Lang::getLocale())--}}
-                                    {{--                                    @php(dd('name_'.Lang::getLocale()))--}}
-                                    {{--                                    @php(dd($item->{'name_'.Lang::getLocale()}))--}}
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">{!! $item->{'name_oz'} !!}</a>
+                                        <a class="nav-link" href="index.html">{!! $item->{'name_'.app()->getLocale()} !!}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -63,13 +61,15 @@
                     </div>
                     <div class="dropdown">
                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                           Tillar
+                            {{ Config::get('languages')[App::getLocale()] }}
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">O'zbekcha</a></li>
-                            <li><a class="dropdown-item" href="#">Ўзбекча</a></li>
-                            <li><a class="dropdown-item" href="#">Русский</a></li>
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}}</a>
+                                @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>

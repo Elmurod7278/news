@@ -1,18 +1,19 @@
 @extends('partials.main')
 
 @section('content')
-<div class="container-scroller">
-    <div class="main-panel">
-        <div class="flash-news-banner">
+    <div class="container-scroller">
+        <div class="main-panel">
+            <div class="flash-news-banner">
 
-                <ul class="nav nav-tabs ">
+                <ul class="nav nav-tabs">
                     @foreach($region as $regions)
-                    <li class="nav-item navbar-blue">
-                        <a class="nav-link text-primary " aria-current="page" href="#">{{$regions->name_uz}}</a>
-                    </li>
+{{--                        @php(dd(app()->getLocale()))--}}
+                        <li class="nav-item">
+                            <a class="nav-link"  aria-current="page" href="#">{!! $regions->{'name_'.App::getLocale()} !!}</a>
+                        </li>
                     @endforeach
                 </ul>
-                </div>
+            </div>
 
         </div>
         <div class="content-wrapper">
@@ -687,5 +688,5 @@
 
         <!-- partial -->
     </div>
-</div>
+    </div>
 @endsection
