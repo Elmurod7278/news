@@ -38,7 +38,7 @@ class AdvertiseController extends Controller
         $adv->link=$date['link'];
         $adv->image=$fileNameToStore;
         $adv->save();
-        return redirect()->route('advertises.index');
+        return redirect()->route('admin.advertises.index');
     }
     public function edit(Advertise $advertise){
      return view('admin.advertise.edit',compact('advertise'));
@@ -64,11 +64,11 @@ class AdvertiseController extends Controller
         $advertise->link=$date['link'];
         $advertise->image=$fileNameToStore;
         $advertise->save();
-        return redirect()->route('advertises.index');
+        return redirect()->route('admin.advertises.index');
     }
     public function destroy(Advertise $advertise){
         $advertise->delete();
-        return redirect()->route('advertises.index');
+        return redirect()->route('admin.advertises.index');
     }
 
 }

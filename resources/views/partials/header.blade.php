@@ -6,22 +6,31 @@
                     <ul class="navbar-top-left-menu">
                         {{--                       //tursin bu soha--}}
                     </ul>
+
+
                     <ul class="navbar-top-right-menu">
+
                         @auth
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">{{ auth()->user()->name }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <button class="btn btn-danger">
-                                        <span class="mdi mdi-arrow-left-circle-outline"></span>
-                                        &nbsp;
-                                        {{ __('lang.logout') }}
-                                    </button>
-                                </form>
-                            </li>
+                            <ul class=" navbar-right">
+                                <li class="nav-item dropdown open" style="padding-left: 15px;">
+
+
+                                    <a style="text-decoration: none; color:white" href="javascript:;"  aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="mdi mdi-account"></span>
+                                        {{ auth()->user()->name }}
+
+                                    </a>
+                                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="btn btn-light">
+                                                {{ __('lang.logout') }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
                         @endauth
 
                         @guest

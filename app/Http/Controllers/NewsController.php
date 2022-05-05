@@ -82,7 +82,7 @@ class NewsController extends Controller
         $news1->type = $type;
         $news1->views_count = 0;
         $news1->save();
-        return redirect()->route('news.index');
+        return redirect()->route('admin.news.index');
     }
 
     public function show(News $news)
@@ -127,14 +127,14 @@ class NewsController extends Controller
         $news->url = $request['url'];
         $news->type = $type;
         $news->save();
-        return redirect()->route('news.index');
+        return redirect()->route('admin.news.index');
 
     }
 
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('news.index');
+        return redirect()->route('admin.news.index');
     }
 
     public function addTag(Request $request, News $news)
@@ -148,10 +148,10 @@ class NewsController extends Controller
             $add->tag_id = $request->tag_id;
             $add->save();
         } else {
-            return redirect()->route('news.show', ['news' => $news->id])->with('error', 'Bu qoshilgan');
+            return redirect()->route('admin.news.show', ['news' => $news->id])->with('error', 'Bu qoshilgan');
         }
 
-        return redirect()->route('news.show', ['news' => $news->id]);
+        return redirect()->route('admin.news.show', ['news' => $news->id]);
     }
 
 
@@ -162,13 +162,13 @@ class NewsController extends Controller
             $tanlov->news_id=$news->id;
             $tanlov->save();
         }
-        return redirect()->route('news.show',['news'=>$news->id]);
+        return redirect()->route('admin.news.show',['news'=>$news->id]);
 
     }
     public function del(News_tag $tag){
         $news_id = $tag->news_id;
         $tag->delete();
-//        return redirect()->route('news.show',['news' => $news_id]);
+//        return redirect()->route('nadmin.ews.show',['news' => $news_id]);
         return redirect()->back();
     }
 }

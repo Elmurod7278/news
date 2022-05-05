@@ -1,5 +1,10 @@
 <?php
 
 return [
-    'login' => 'Bойти'
+    'login' => 'Bойти',
+    'logout'=>'Выйти',
+    'register'=>'Регистрация',
+    'category'=>'Категория',
+    'latestnews'=>"Последние новости",
+    'video'=>"Видео новости"
 ];

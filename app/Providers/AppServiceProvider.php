@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Advertise;
 use App\Models\Category;
+use App\Models\News;
 use App\Models\Region;
 use App\Services\CategoryService;
 use Illuminate\Support\Facades\View;
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('category',Category::all());
         View::share('region',Region::all());
+        View::share('reklama',Advertise::all()->random(1)->first());
     }
 }

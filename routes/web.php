@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsTagController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TanlovController;
 use App\Http\Controllers\UserController;
@@ -29,12 +30,7 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('', function () {
-    return view('partials.body');
-})->name('home');
-
-
-
+Route::get('', [SiteController::class, 'index'])->name('home');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'name' => 'admin.', 'middleware' => ['auth']], function () {

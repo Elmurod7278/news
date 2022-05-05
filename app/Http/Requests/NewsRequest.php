@@ -37,7 +37,7 @@ class NewsRequest extends FormRequest
             'region' => 'nullable|integer',
             'image' => 'required',
             'type' => 'nullable',
-            'url' => 'nullable|url',
+            'url' => 'nullable',
         ];
     }
 }

@@ -27,7 +27,7 @@ class HomeController extends Controller
         }
 
         if (auth()->user()->roles->first()) {
-            return view('home');
+            return view('adminHome');
         }
 
         return redirect()->route('home');
