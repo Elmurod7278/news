@@ -3,21 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    private $service;
-
-    public function __construct(CategoryService $service)
-    {
-        $this->service = $service;
-
-
-    }
-
-
     public function index(Request $request)
     {
         $query=Category::orderBy('created_at','Desc');
@@ -49,10 +38,11 @@ class CategoryController extends Controller
         ]);
 
         Category::create($date);
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
     public function show(Category $category){
          return view('admin.category.show',['category'=>$category]);
+
     }
     public function edit(Category $category){
          return view('admin.category.edit',['category'=>$category]);
@@ -64,17 +54,12 @@ class CategoryController extends Controller
             'name_oz'=>'required',
         ]);
         $category->update($date);
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
 
     }
     public function destroy(Category $category){
         $category->delete();
-        return redirect()->route('category.index');
+        return redirect()->route('admin.category.index');
     }
 
-    public function catser(Request $request){
-
-
-
-    }
 }

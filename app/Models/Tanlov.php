@@ -12,6 +12,6 @@ class Tanlov extends Model
 
     public function news()
     {
-        return $this->hasOne(News::class);
+        return $this->belongsTo(News::class);
     }
 }

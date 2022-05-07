@@ -10,15 +10,21 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
 
-    private $service;
-
-    public function __construct(TagService $service)
-    {
-        $this->service = $service;
-
-    }
     public function index(Request $request){
-        $tags=$this->service->findTag($request)->paginate(5);
+        $query=Tag::orderBy('created_at','Desc');
+
+        if (!empty($value = $request->get('name_uz'))) {
+            $query->where('name_uz', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('name_oz'))) {
+            $query->where('name_oz', 'like', '%' . $value . '%');
+        }
+
+        if (!empty($value = $request->get('name_ru'))) {
+            $query->where('name_ru', $value);
+        }
+        $tags=$query->paginate(5);
         return view('admin.tag.index',compact('tags'));
     }
     public function create()
@@ -33,7 +39,7 @@ class TagController extends Controller
         ]);
 
         Tag::create($date);
-        return redirect()->route('tag.index');
+        return redirect()->route('admin.tag.index');
     }
     public function show(Tag $tag){
         return view('admin.tag.show',['tag'=>$tag]);
@@ -49,11 +55,11 @@ class TagController extends Controller
         ]);
 
         $tag->update($date);
-        return redirect()->route('tag.index');
+        return redirect()->route('admin.tag.index');
 
     }
     public function destroy(Tag $tag){
         $tag->delete();
-        return redirect()->route('tag.index');
+        return redirect()->route('admin.tag.index');
     }
 }

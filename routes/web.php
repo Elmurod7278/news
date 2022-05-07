@@ -31,15 +31,16 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index']);
 Auth::routes();
 
 Route::get('', [SiteController::class, 'index'])->name('home');
+Route::get('views/{news}', [SiteController::class, 'views'])->name('news.view');
+Route::get('views/{latestNew}', [SiteController::class, 'latestNew'])->name('latestNew.view');
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'name' => 'admin.', 'middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'name' => 'admin.', 'middleware' => ['auth']], function () {
     Route::resource('permissions', PermissionController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 
     Route::resource('category', CategoryController::class);
-    Route::get('catser', [CategoryController::class, 'catser'])->name('catser');
     Route::resource('regions', RegionController::class);
     Route::resource('tag', TagController::class);
     Route::resource('tanlov', TanlovController::class);
